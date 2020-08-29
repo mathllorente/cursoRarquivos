@@ -1,0 +1,288 @@
+---
+Conceitos Básicos do R - Matheus Leite Llorente
+Mão na massa 1!
+---
+
+1- O arquivo "chocolate.csv" possui chocolates de 20 marcas diferentes e suas respectivas massas (em gramas). Importe ele atribuindo a variável “chocolates”.
+```{r}
+
+#Importe o arquivo "ex1" e atribua ao nome "pessoas" (use o import dataset, read.csv()... a melhor forma para ti :).)
+
+library(readr)
+chocolates <- read_delim("C:/Users/Zilda/Desktop/unifesp/R/Introdução ao R - Exercícios/chocolate.csv", 
+    ";", escape_double = FALSE, trim_ws = TRUE)
+
+
+```
+2- Com o dataset “chocolates”, imprima a coluna “Gramas”.
+```{r}
+chocolates$Gramas #Em valores 
+#ou
+chocolates[2] #Em data.frame
+```
+3- Imprima o tamanho da coluna “Gramas”. Atribua o valor a variável "tamanho".
+```{r}
+
+tamanho = length(chocolates$Gramas)
+
+```
+4. Calcule a soma de todos os valores da coluna "Gramas". Atribua o valor a variável "soma".
+```{r}
+
+soma = sum(chocolates$Gramas)
+
+```
+5. Calcule a média da coluna "Gramas" utilizando as variáveis "tamanho" e "soma".
+```{r}
+
+soma/tamanho
+
+```
+6- Crie uma matriz que tenha 3 linhas e 4 colunas, com valores de 1 a 12 (ordenados por coluna). Atribua a variável "matriz1"
+```{r}
+
+matriz1 = matrix(c(1:12), nrow = 3, ncol = 4, byrow = FALSE)
+matriz1
+
+```
+7- Crie outra matriz, com as mesmas características mas com valores ordenados por linhas. Atribua a variável "matriz2"
+```{r}
+
+matriz2 = matrix(c(1:12), nrow = 3, ncol = 4, byrow = TRUE)
+matriz2
+
+```
+8- Altere o nome das colunas da matriz1 para "A","B","C" e "D" respectivamente. Além disso, altere o nome das linhas para "Primeira", "Segunda" e "Terceira" respectivamente.
+```{r}
+
+colnames(matriz1) = c("A","B","C","D")
+rownames(matriz1) = c("Primeira", "Segunda", "Terceira")
+matriz1
+
+```
+9- Altere o nome das colunas da matriz2 para "E","F","G" e "H" respectivamente. Além disso, altere o nome das linhas para "Primeira", "Segunda" e "Terceira" respectivamente.
+```{r}
+
+colnames(matriz2) = c("D","E","F","G")
+rownames(matriz2) = c("Primeira", "Segunda", "Terceira")
+matriz2
+
+```
+10- Qual é o valor da posição 5 na matriz2? Em código, como ficaria?
+```{r}
+
+matriz2[5] #Como é um valor inteiro e sem "," então estou buscando a posição 
+
+```
+11- Na matriz2 extraia a coordenada "3,2". Qual o valor dessa coordenada?
+```{r}
+
+matriz2[3,2] #Observe que no colchete eu estou colocando a coordenada
+
+```
+12- Extraia apenas a coluna 2 da matriz2.
+```{r}
+
+matriz2[,2]
+
+```
+13- Extraia todos os valores da matriz2 que são pares. (Todo número ímpar dividido por 2 possui resto igual a 1, e todo número par dividido por 2 possui resto igual a 0.)
+```{r}
+
+matriz2[matriz2%%2 == 0] #Observe que entre os colchetes eu estou atribuindo uma condição lógica
+
+```
+14- Crie um vetor "x" que tenha números de 1 a 10 e um vetor "y" que tenha números de 11 a 20. Crie um dataframe com essas duas variáveis, atribuindo a variável "meudata".
+```{r}
+
+x = c(1:10)
+y = c(11:20)
+
+meudata = data.frame(x,y)
+meudata
+
+```
+15- Qual é a posição "2" do meudata?
+```{r}
+
+meudata[2] #Observe que no dataframe, as posições são ordenadas por colunas
+
+meudata$y #Observe que este comando retorna o mesmo, mas com os valores
+
+```
+16- Extraia o valor da coordenada "5,2" do meudata.
+```{r}
+
+meudata[5,2] #Observe que no colchete eu estou colocando a coordenada
+
+```
+17- Extraia todos os valores do meudata que são ímpares. (Todo número ímpar dividido por 2 possui resto igual a 1, e todo número par dividido por 2 possui resto igual a 0.)
+```{r}
+
+meudata[meudata%%2 == 1] #Observe que entre os colchetes eu estou atribuindo uma condição lógica
+
+```
+18. O dataset "iris" do R revela características de cada espécie da flor Iris. Imprima as primeiras 20 linhas.
+```{r}
+
+head(iris, 20)
+
+```
+19. Do mesmo dataset "iris", imprima as 10 últimas linhas.
+```{r}
+
+tail(iris, 10)
+
+```
+20. João tem exatamente 10 anos de idade e Maria tem exatamente 8 anos de idade. Atribua as idades de cada um à uma variável de valor inteiro e, com operadores condicionais/lógicos, retorne "Maria é mais velha" ou "João é mais velho".
+```{r}
+
+j = 10L
+m = 8L
+
+if(j>m){
+  print("João é mais velho")}else{
+    print("Maria é mais velha")
+  }
+
+
+```
+21. Sabe-se que todo número ímpar dividido por 2 possui resto igual a 1, e todo número par dividido por 2 possui resto igual a 0. Crie um vetor de  sequência 1 ao 50 e retorne todos os valores pares.
+```{r}
+
+vetor = c(1:50)
+
+vetor[vetor%%2 == 0]
+
+```
+22. Crie dois vetores de mesmo tamanho, some as posições equivalentes dos vetores e atribua o resultado a um novo vetor (imprima ele).
+```{r}
+
+v1 = c(10,20,30,40)
+v2 = c(1,1,1,1)
+v3 = v1 + v2
+v3
+
+```
+23. "women", "AirPassengers", "volcano"  são datasets presentes no R. Verifique qual é a classe de cada um.
+```{r}
+
+class(women)
+class(AirPassengers)
+class(volcano)
+
+```
+24. Imprima o dataset "WorldPhones", posteriormente filtre e imprima apenas a coluna "Europe".
+```{r}
+
+WorldPhones
+
+WorldPhones[,2]
+
+```
+25. Crie um vetor de 1 a 10. Some 5 a cada número ímpar e substitua no vetor original.
+```{r}
+
+vetor = c(1:10)
+
+vetor[vetor%%2 == 1] = vetor[vetor%%2 == 1] + 5
+vetor
+
+```
+26. Considere: v = c(8,13,3,4). Acrescente os valores 10 e 50 ao vetor.
+```{r}
+
+v = c(8,13,3,4) #Criando o vetor
+x = length(v) #Verificando o tamanho do vetor e atribuindo à variável x
+v[c(x + 1, x + 2)] = c(10,50) #Acrescentando os valores (x+1 é a próxima da última posição...)
+v
+
+```
+27. Calcule a raiz quadrada de 10.
+```{r}
+
+sqrt(10)
+#ou
+10^(1/2)
+
+```
+28. Considere o seguinte vetor: phones = c(50,100,500,1000). Este é o vetor de preços de telefones em Reais. A cotação atual do dólar está por volta de 5,20$. Calcule os preços dos telefones em dólares. 
+```{r}
+
+phones = c(50,100,500,1000)
+phones = phones*5.20
+phones
+
+```
+29. Crie uma variável com a sua idade e imprima no console "Minha idade é x", onde x é a sua idade.
+```{r}
+
+idade = 18
+
+paste("Minha idade é", idade)
+
+```
+30. Importe o arquivo "notas.csv" presente no arquivo disponibilizado. Visualize o arquivo.
+```{r}
+
+#Você pode importar com o "import dataset" na janela "Environment" ou:
+#Escolha o diretório onde está o arquivo (pode ser com setwd() ou em
+# Session > Set Working Directory > Choose Directory...)
+notas = read.csv("notas.csv", header = TRUE, sep = ";")
+View(notas)
+
+```
+31. Qual a classe do arquivo "notas"?
+```{r}
+
+class(notas)
+
+```
+32. Crie um gráfico de dispersão com as variáveis Prova1 e Prova2. Defina os seguintes atributos: Título, Nome dos eixos, Cor e Preenchimento dos elementos.
+```{r}
+
+plot(notas$Prova1, notas$Prova2, main = "Provas", xlab = "Prova 1", ylab = "Prova 2", col = "blue", pch = 20)
+
+
+```
+33. Crie um gráfico de histograma sobre a Prova1. Altere o título e o nome dos eixos
+```{r}
+
+hist(notas$Prova1, main  = "Prova 1", xlab = "Notas", ylab = "Frequência")
+
+```
+34. Crie um gráfico de histograma sobre a Prova2. Altere o título e o nome dos eixos
+```{r}
+
+hist(notas$Prova2, main  = "Prova 2", xlab = "Notas", ylab = "Frequência")
+
+
+```
+35. Divida o plot em 2 telas. Na primeira tela, crie um gráfico de densidade sobre a Prova1. Faça o mesmo com a Prova2 na segunda tela.
+```{r}
+
+split.screen(figs = c(1,2))
+screen(1)
+densidade1 = density(notas$Prova1)
+plot(densidade1, main = "Densidade Prova 1")
+screen(2)
+densidade2 = density(notas$Prova2)
+plot(densidade2, main = "Densidade Prova 2")
+close.screen(all = T)
+
+```
+36. Importe o arquivo "empresa.csv". Este arquivo apresenta os salários de 5 funcionários (A, B, C, D e E) mês por mês. Agregue todos os salários de cada funcionário.
+```{r}
+
+agrg = aggregate(. ~ Funcionario, data = empresa, sum)
+head(agrg)
+
+```
+37. Gere um gráfico de barras com a agregação do exercício anterior.
+```{r}
+
+barplot(agrg$Salario, col = gray.colors(nrow(agrg)), names.arg = agrg$Funcionario, main = "Salários Anuais")
+
+```
+
+

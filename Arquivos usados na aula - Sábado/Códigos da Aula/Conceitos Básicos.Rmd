@@ -1,0 +1,115 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+Declarando as variáveis
+```{r}
+
+x = 1 #Lê-se: x recebe 1
+y <- 2 #Lê-se: y recebe 2
+
+x #Visualizar a variável no console
+print(x) #Visualizar a variável no console
+
+```
+
+![Classes](https://i.ibb.co/k5hhnrt/class.png)
+
+As principais classes e seus tipos
+```{r}
+
+a = 1.5 #Dobule
+
+print(a)
+class(a) #Verificar a classe da variável
+typeof(a) #Verificar o tipo da variável
+
+b = 1L #Integer
+
+print(b)
+class(b)
+typeof(b)
+
+c = TRUE #Booleano/Logical
+
+print(c)
+class(c)
+typeof(c)
+
+d = "Palavra" #Character
+
+print(d)
+class(d)
+typeof(d)
+
+e = 1 + 3i #Complex
+
+print(e)
+class(e)
+typeof(e)
+
+idade = 18
+class(idade)
+t = as.factor(idade) #Alterar a classe/tipo de algo
+t
+class(t)
+
+
+```
+
+![Operações Lógicas](https://i.ibb.co/py2J3Qh/Operadores-l-gicos.png)
+
+![Operações Aritméticas](https://i.ibb.co/2ycrWy9/ar.png)
+
+Operações
+```{r}
+
+#Armazenando valores nas variáveis
+#Podemos usar o = ou o <-
+s = 2 
+v = 3
+
+resultado = s + v #Armazenando a operação em uma variável
+resultado #Visualizando o resultado
+
+s - v #Subtração
+s/v #Divisão
+s*v #Multiplicação
+s**v #Potência
+s^v #Potência
+
+s^2 #Potência
+sqrt(s) #Raiz Quadrada
+
+s > v #Operador lógico "maior que"
+s==v  #Operador lógico "exatamente igual a"
+v > s #Operador lógico "maior que"
+s <= 3 #Operador lógico "menor ou igual a"
+s != v #Operador lógico "diferente de"
+s & 1 < v #Operador lógico "elemento E elemento são menores que"
+(s | 3) > 1 #Operador lógico "elemento OU elemento são maiores que"
+
+```
+Funções básicas
+```{r}
+
+help(mean) #Função ajuda
+?mean #Função ajuda
+#Ou apenas, pressione "F1" 
+citation() #Como citar o R em referências
+ls() #Todas as variáveis decladaras
+rm(a) #Remover uma varíavel
+rm(list=ls()) #Remover todas as variáveis
+getwd() #Diretório ativo no momento
+setwd() #Alterar o diretório
+
+```
+Instalação de pacotes
+```{r}
+
+install.packages("nome do pacote", dependencies = T) #Como instalar por cógido
+library(nome do pacote) #Para carregar o pacote
+browseVignettes("DataEditR") #Verificando a documentação do pacote
+
+```
+

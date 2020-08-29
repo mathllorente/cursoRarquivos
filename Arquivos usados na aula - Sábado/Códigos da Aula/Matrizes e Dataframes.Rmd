@@ -1,0 +1,86 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+Matrizes e Dataframes
+
+Matriz
+```{r}
+
+x = c(1:10) #Criando um vetor
+ 
+z = matrix(x, nrow = 2, ncol = 5, byrow = F) #Transformando em matriz
+p = matrix(x, nrow = 2, ncol = 5, byrow = T) #Criando uma matriz 
+
+#Primeira instância: Colocar o "data", o vetor que vai virar matriz
+#Segunda instância: Colocar o número de linhas
+#Terceira instância: Colocar o número de colunas
+#Observação: o número de linhas vezes o número de colunas deve ser igual ao tamanho do meu vetor
+#Quarta instância: ordenar por linhas (byrow = T) ou colunas (byrow = F)
+
+z #A matriz
+
+z[5] #Posição
+z[1,2] #Coordenada
+z[1,] #Retorna a primeira linha
+z[,1] #Retorna a primeira coluna
+z[ z%%2 == 0 ] #Atribuição lógica
+z[-1,] #Tudo menos a primeira linha
+
+colnames(z) = c("Coluna1", "Coluna2", "Coluna3", "Coluna4", "Coluna5") #Atribuindo nomes as colunas
+rownames(z) = c("Linha1", "Linha2") #Atribuindo nomes as linhas
+
+p
+z
+p*z #Multiplicação de elementos equivalentes entre as matrizes
+
+a = matrix(x, nrow = 2, ncol = 5, byrow = F)
+b = matrix(x, nrow = 5, ncol = 2, byrow = F)
+
+a%*%b #Multiplicação matricial
+
+y = c(1:4)
+c = matrix(y, nrow = 2, ncol = 2, byrow = F)
+solve(c) #Matriz inversa
+
+
+```
+Dataframe
+```{r}
+
+meux = c("A", "B", "C") #Vetor
+meuy = c(1:3) #Vetor
+
+meudata = data.frame(meux, meuy) #Criação do dataframe
+
+
+meudata[2] #Posição da coluna (perceba que o data.frame atribui as colunas como posições, e retorna como coluna)
+meudata$meuy #Retorna a coluna y em valores
+meudata[1,2] #Coordenada
+meudata[1,] #Retorna a primeira linha
+meudata[,1] #Retorna a primeira coluna
+meudata[meudata%%2 == 1] #Atribuição lógica (erro, pois há fatores)
+meudata[-1] #Tudo menos a primeira posição (note que a primeira posição é a primeira coluna INTEIRA)
+meudata[-1,] #Tudo menos a primeira linha
+
+g = meudata$meuy #Atribuindo os valores da coluna a uma variável
+g*2 #Multiplicando todos os valores por 2
+g[g%%2 == 1] #Atribuição lógica sem erro
+
+
+colnames(meudata) = c("Coluna1", "Coluna2") #Atribuindo nomes as colunas
+
+meudata[3] = c(4,5,6) #Adicionando uma nova coluna ao dataframe
+meudata[c(T,F,T),] #Busca lógica
+
+#Estudando os dados
+
+if(!require(dplyr)) install.packages("dplyr")
+
+
+str(meudata)
+dplyr::glimpse(meudata)
+
+```
+

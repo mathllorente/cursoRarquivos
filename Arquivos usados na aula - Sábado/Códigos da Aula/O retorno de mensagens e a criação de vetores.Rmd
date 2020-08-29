@@ -1,0 +1,62 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+O retorno de mensagens e a criação de vetores
+
+Utilizando o retorno de mensagem
+```{r}
+
+print("Alguma coisa") #Retorna somente character ou uma variável
+
+nome = "Matheus"
+idade = 18
+
+paste("Olá tudo bem? Meu nome é", nome, "e eu tenho", idade, "anos.") #Permite juntar character e numeric
+
+paste0("Olá tudo bem?", nome) #Concatena qualquer coisa (sem espaços)
+
+
+```
+Criação de vetores
+```{r}
+
+vetor1 = c(1,5,6) #vetor numérico
+
+which(vetor1 == 5) #Encontrando a posição de um argumento
+
+vetor2 = c("A","B","C") #vetor character
+vetor3 = c(TRUE,FALSE,T) #vetor lógico
+
+str(vetor3) #Resumo prático do vetor
+
+vetor1[1] #Primeira posição do meu vetor
+vetor1[vetor1%%2 == 1] #Atribuição lógica
+vetor1[4] = 10 #Acrescentando valores ao vetor
+
+sum(vetor1) #Somando todos os elementos do vetor1
+
+x = 1:10 #Criando uma sequência simples em vetor, valor inicial:valor final
+x
+
+y = rep(1,5) #sistema de repetição
+y
+
+concatenar = c(vetor1,vetor2) #vetor dentro de vetor
+concatenar
+class(concatenar)
+
+```
+Criação de listas
+```{r}
+
+vetor4 = c(1,2,3) #Criando um vetor numérico
+vetor5 = c("Matheus", "Llorente") #Criando um vetor com character
+
+lista = list(vetor4, vetor5) #Juntando os vetores sem alterar sua estrutura
+lista
+```
+
+
+

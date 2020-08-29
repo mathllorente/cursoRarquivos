@@ -1,0 +1,81 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+Estruturas lógicas e loops:
+
+Entendendo o if (lógica)
+```{r}
+
+número = 5 #Atribuindo um valor a minha variável
+ 
+if(número > 0){ #"Se", o que está entre os parênteses for verdadeiro
+  print("O número é positivo.") #Faça o que está dentro das {}
+}else{ #Caso contrário
+  print("O número ? negativo.") #Faça o que está dentro das {}
+}
+
+ifelse(número>0, "Positivo", "Negativo") #Estrutura lógica em uma linha
+
+if(número == 5){
+  print("O número é igual a 5")
+}else if(número > 5){
+  print("O número é maior que 5")
+}else if(número < 5){
+  print("O número é menor que 5")
+}
+
+```
+Entendendo o for (loop)
+```{r}
+
+z = c(1:10) #z é um vetor de 1 a 10
+
+for(i in z){ #Perceba: o "i" irá percorrer todos os elementos de z
+  print(i)
+}
+
+```
+Entendendo o while (loop)
+```{r}
+
+a = 1 #"a" é uma variável que recebe o valor 1
+
+while(a < 10){ #Enquanto o "a" for menor que 10, fa?a o que está dentro das {}
+  print(a) 
+  a = a + 1 #Perceba que, após a o script precisamos alterar o valor de "a" para evitar um loop infinito
+}
+
+```
+
+Exemplo prático
+
+![Análise](https://i.ibb.co/t8pW8ZY/Crescimento-Planta.png)
+
+```{r}
+
+#Criando a lógica da planta
+
+
+altura = c(1:30) #A altura nos 30 anos
+
+for(x in altura){ #Para x em altura (como a altura primeiramente recebeu o ano, o x vai "percorrer" os anos)
+  if(x >= 1 & x <= 3){ #Se o ano é maior ou igual a um e menor ou igual a 3, então
+    altura[x] = x^2.5 #A altura[no ano da lógica] recebe x elevado a 2,5
+  }else if(x>= 4 & x<= 8){ #Caso contrário, se o ano for maior ou igual a 4 e menor ou igual a 8, então
+    altura[x] = x^2 #A altura[no ano da lógica] recebe x elevado a 2
+  }else if(x>8){ #Caso contrário, se o ano é maior do que 8, então
+    altura[x] = altura[8] #A altura[no ano da lógica] recebe a mesma altura do ano 8
+  }
+}
+
+ano = c(1:30) #Definindo os anos da planta
+
+#Gerando o Gráfico da Planta X
+
+plot(ano, altura, xlab = "Ano", ylab = "Altura", main = "Crescimento da Planta X", pch = 20)
+
+
+```
+

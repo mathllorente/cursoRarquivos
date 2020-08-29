@@ -1,0 +1,77 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+Visualização de Gráficos
+
+Visualizando o dataset "iris"
+```{r}
+
+head(iris)
+
+```
+Dispersão: Utilizando a função plot()
+```{r}
+
+plot(iris) #Vários gráficos de dispersão
+plot(iris$Sepal.Length, iris$Petal.Length) #Dispersão em duas variáveis
+plot(iris$Sepal.Length, iris$Petal.Length, xlab = "Eixo x", ylab = "Eixo y", main = "Título do Gráfico") #Atribuindo nomes aos eixos e ao título do gráfico
+
+plot(iris$Sepal.Length, iris$Petal.Length, xlab = "Eixo x", ylab = "Eixo y", main = "Título do Gráfico", col = "blue", pch = 20)#Atribuindo cores e formato aos elementos do gráfico
+
+
+```
+Histograma: Utilizando a função hist()
+```{r}
+
+hist(iris$Sepal.Length)
+hist(iris$Sepal.Length, xlab = "Sepal Length", ylab = "Frequência", main = "Sepal Length", col = "gray") #Atribuindo nomes aos eixos, ao título do gráfico e alterando a cor
+
+
+```
+Densidade: Utilizando a função density() e a função plot()
+```{r}
+
+densidade = density(iris$Sepal.Width)
+plot(densidade)
+
+```
+Sobrepondo gráficos: Densidade no gráfico de histograma
+```{r}
+
+#Eixos sobrepostos
+
+hist(iris$Sepal.Width)
+par(new = TRUE)
+densidade = density(iris$Sepal.Width)
+plot(densidade)
+
+#Eixo apenas da densidade
+
+hist(iris$Sepal.Width, xlab = NULL, ylab = NULL, main = NULL, xaxt= "n", yaxt="n")
+par(new = TRUE) #New = True significa um novo gráfico que ficará sobreposto
+densidade = density(iris$Sepal.Width)
+plot(densidade, xlab = "Sepal Length", ylab = "Frequência", main = "Sepal Length") #Atribuindo nomes aos eixos, ao título do gráfico e alterando a cor
+
+
+```
+Boxplot
+```{r}
+
+boxplot(iris$Sepal.Width)
+boxplot(iris$Sepal.Width, main = "Título", xlab = "Eixo", col = "gray", outline = F, horizontal = T) 
+boxplot.stats(iris$Sepal.Width)
+
+```
+Gráfico de Barras: Agregar valores e gerar o gráfico
+```{r}
+
+dplyr::glimpse(InsectSprays)
+
+agregar = aggregate(. ~ spray, data = InsectSprays, sum)
+agregar
+
+barplot(agregar$count) #Gerando o gráfico de barras
+barplot(agregar$count, col = gray.colors(nrow(agregar)), names.arg = agregar$spray) #Atribuindo nome as barras
+legend("bottomright", legend = agregar$spray, fill = gray.colors(nrow(agregar)))
+```

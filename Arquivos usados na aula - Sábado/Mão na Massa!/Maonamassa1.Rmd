@@ -1,0 +1,154 @@
+---
+Conceitos Básicos do R - Matheus Leite Llorente
+Mão na massa 1!
+---
+
+1- O arquivo "chocolate.csv" possui chocolates de 20 marcas diferentes e suas respectivas massas (em gramas). Importe ele atribuindo a variável “chocolates”.
+```{r}
+
+```
+2- Com o dataset “chocolates”, imprima a coluna “Gramas”.
+```{r}
+
+```
+3- Imprima o tamanho da coluna “Gramas”. Atribua o valor a variável "tamanho".
+```{r}
+
+```
+4. Calcule a soma de todos os valores da coluna "Gramas". Atribua o valor a variável "soma".
+```{r}
+
+```
+5. Calcule a média da coluna "Gramas" utilizando as variáveis "tamanho" e "soma".
+```{r}
+
+```
+6- Crie uma matriz que tenha 3 linhas e 4 colunas, com valores de 1 a 12 (ordenados por coluna). Atribua a variável "matriz1"
+```{r}
+
+```
+7- Crie outra matriz, com as mesmas características mas com valores ordenados por linhas. Atribua a variável "matriz2"
+```{r}
+
+```
+8- Altere o nome das colunas da matriz1 para "A","B","C" e "D" respectivamente. Além disso, altere o nome das linhas para "Primeira", "Segunda" e "Terceira" respectivamente.
+```{r}
+
+```
+9- Altere o nome das colunas da matriz2 para "E","F","G" e "H" respectivamente. Além disso, altere o nome das linhas para "Primeira", "Segunda" e "Terceira" respectivamente.
+```{r}
+
+```
+10- Qual é o valor da posição 5 na matriz2? Em código, como ficaria?
+```{r}
+
+```
+11- Na matriz2 extraia a coordenada "3,2". Qual o valor dessa coordenada?
+```{r}
+
+```
+12- Extraia apenas a coluna 2 da matriz2.
+```{r}
+
+```
+13- Extraia todos os valores da matriz2 que são pares. (Todo número ímpar dividido por 2 possui resto igual a 1, e todo número par dividido por 2 possui resto igual a 0.)
+```{r}
+
+```
+14- Crie um vetor "x" que tenha números de 1 a 10 e um vetor "y" que tenha números de 11 a 20. Crie um dataframe com essas duas variáveis, atribuindo a variável "meudata".
+```{r}
+
+```
+15- Qual é a posição "2" do meudata?
+```{r}
+
+```
+16- Extraia o valor da coordenada "5,2" do meudata.
+```{r}
+
+```
+17- Extraia todos os valores do meudata que são ímpares. (Todo número ímpar dividido por 2 possui resto igual a 1, e todo número par dividido por 2 possui resto igual a 0.)
+```{r}
+
+```
+18- O dataset "iris" do R revela características de cada espécie da flor Iris. Imprima as primeiras 20 linhas.
+```{r}
+
+```
+19. Do mesmo dataset "iris", imprima as 10 últimas linhas.
+```{r}
+
+```
+20. João tem exatamente 10 anos de idade e Maria tem exatamente 8 anos de idade. Atribua as idades de cada um à uma variável de valor inteiro e, com operadores condicionais/lógicos, retorne "Maria é mais velha" ou "João é mais velho".
+```{r}
+
+```
+21. Sabe-se que todo número ímpar dividido por 2 possui resto igual a 1, e todo número par dividido por 2 possui resto igual a 0. Crie um vetor de sequência 1 ao 50 e retorne todos os valores pares.
+```{r}
+
+```
+22. Crie dois vetores de mesmo tamanho, some as posições equivalentes dos vetores e atribua o resultado a um novo vetor (imprima ele).
+```{r}
+
+```
+23. "women", "AirPassengers", "volcano" são datasets presentes no R. Verifique qual é  a classe de cada um.
+```{r}
+
+```
+24. Imprima o dataset "WorldPhones", posteriormente filtre e imprima apenas a coluna "Europe".
+```{r}
+
+```
+25. Crie um vetor de 1 a 10. Some 5 a cada número ímpar e substitua no vetor original.
+```{r}
+
+```
+26. Considere: v = c(8,13,3,4). Acrescente os valores 10 e 50 ao vetor.
+```{r}
+
+```
+27. Calcule a raiz quadrada de 10.
+```{r}
+
+```
+28. Considere o seguinte vetor: phones = c(50,100,500,1000). Este é o vetor de preços de telefones em Reais. A cotação atual do dólar está por volta de 5,20$. Calcule os preços dos telefones em dólares.
+```{r}
+
+```
+29. Crie uma variável com a sua idade e imprima no console "Minha idade é x", onde x é a sua idade.
+```{r}
+
+```
+30. Importe o arquivo "notas.csv" presente no arquivo disponibilizado. Visualize o arquivo. (O separador é “;”)
+```{r}
+
+```
+31. Qual a classe do arquivo "notas"?
+```{r}
+
+```
+32. Crie um gráfico de dispersão com as variáveis Prova1 e Prova2. Defina os seguintes atributos: Título, Nome dos eixos, Cor e Preenchimento dos elementos.
+```{r}
+
+```
+33. Crie um gráfico de histograma sobre a Prova1. Altere o título e o nome dos eixos
+```{r}
+
+```
+34. Crie um gráfico de histograma sobre a Prova2. Altere o título e o nome dos eixos
+```{r}
+
+```
+35. Divida o plot em 2 telas. Na primeira tela, crie um gráfico de densidade sobre a Prova1. Faça o mesmo com a Prova2 na segunda tela.
+```{r}
+
+```
+36. Importe o arquivo "empresa.csv". Este arquivo apresenta os salários de 5 funcionários (A, B, C, D e E) mês por mês. Agregue todos os salários de cada funcionário.
+```{r}
+
+```
+37. Gere um gráfico de barras com a agregação do exercício anterior.
+```{r}
+
+```
+
