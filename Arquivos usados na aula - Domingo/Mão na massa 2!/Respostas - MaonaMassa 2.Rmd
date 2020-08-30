@@ -1,0 +1,191 @@
+---
+Introdução à Estatística no R - Matheus Leite Llorente
+Mão na massa 2!
+---
+
+1. Importe o arquivo “alunos.csv”, o separador é “;”. Neste arquivo há 1000 alunos de uma escola e suas respectivas notas em uma determinada prova. Suponha que você queira entrevistar uma amostra dessa população. Extraia uma amostra simples de 30% da coluna “Nota", atribuindo à variável amostra. 
+```{r}
+
+x = sample(c(0,1), nrow(alunos), replace = T, prob = c(0.7,0.3))
+
+amostra = alunos[x==1,]
+amostra
+
+```
+2- Calcule a média da coluna "Nota" do dataset "alunos" e da sua amostra. Compare as médias.
+```{r}
+
+mean(alunos$Nota)
+mean(amostra$Nota)
+
+```
+3- Do mesmo dataset "alunos" extraia uma amostra sistemática que some 3 a partir de um valor aleatório, com limite de 1000.
+```{r}
+#install.packages("TeachingSampling") -- Instale o pacote, caso ainda não tenha
+library(TeachingSampling) #Carregue o pacote antes de executar a função
+
+x = S.SY(1000, 3)
+
+amostra2 = alunos[x,]
+amostra2
+```
+4- Calcule a média da coluna "Nota" do dataset "alunos" e da amostra do exercício anterior. Compare as médias.
+```{r}
+
+mean(alunos$Nota)
+mean(amostra2$Nota)
+
+```
+5- Calcule uma margem de erro para média da amostra simples, com nível de confiança de 95%.
+```{r}
+
+z = 1.96 #Nível de confiança de 95%
+
+desviop = sd(amostra$Nota)
+n = nrow(amostra)
+
+me = z*(desviop/sqrt(n))
+
+paste("A margem de erro é de", round(me,2))
+
+
+```
+6- Qual é o intervalo de confiança para o exercício anterior?
+```{r}
+
+min = mean(amostra$Nota) - me
+max = mean(amostra$Nota) + me
+
+paste("O intervalo de cofiança é de", round(min,2), "a", round(max,2))
+
+```
+7- Calcule uma margem de erro para média da amostra sistemática, com nível de confiança de 95%.
+```{r}
+
+z2 = 1.96 #Nível de confiança de 95%
+
+desviop2 = sd(amostra2$Nota)
+n2 = nrow(amostra2)
+
+me2 = z*(desviop2/sqrt(n2))
+
+paste("A margem de erro é de", round(me2,2))
+
+
+```
+8- Qual é o intervalo de confiança para o exercício anterior?
+```{r}
+
+min2 = mean(amostra$Nota) - me2
+max2 = mean(amostra$Nota) + me2
+
+paste("O intervalo de cofiança é de", round(min2,2), "a", round(max2,2))
+
+
+```
+9- Qual a probabilidade de eu jogar uma moeda 10 vezes e dar "cara" 5 vezes?
+```{r}
+
+dbinom(5,10, 0.5)
+
+```
+10- Qual a probabilidade de eu jogar uma moeda 5 vezes e dar menos que 3 "coroas"?
+```{r}
+
+dbinom(0,5,0.5) + dbinom(1,5,0.5) + dbinom(2,5,0.5)
+
+#ou
+
+pbinom(2,5,0.5)
+
+```
+11- Qual a probabilidade de eu jogar uma moeda 5 vezes e dar mais que 3 "caras"?
+```{r}
+
+pbinom(3,5, 0.5, lower.tail = F)
+
+```
+12- Qual a probabilidade de eu jogar uma moeda 5 vezes e dar 5 "coroas"?
+```{r}
+
+dbinom(5,5,0.5)
+
+1/2^5 #Perceba que é o mesmo resultado, pois a possibilidade de dar 5 coroas nas 5 vezes é de apenas uma em 32 possibilidades
+
+```
+13- Uma prova têm 10 exercícios com 5 alternativas cada. Qual a probabilidade de eu acertar APENAS 6 questões "chutando"?
+```{r}
+
+#Probabilidade de acertar a questão = 1/5 (0,2)
+dbinom(6,10,0.20)
+
+
+```
+14- O dataset "faithful" vem nativo com o RStudio. Ele demonstra o tempo de espera entre as erupções e a duração do Gêiser Old Faithful, nos EUA.  Extraia a coluna "waiting" e verifique se os dados estão normalmente distribuídos.
+```{r}
+
+hist(faithful$waiting, xlab = NULL, ylab = NULL, main = NULL)
+par(new = T)
+densidade = density(faithful$waiting)
+plot(densidade, xaxt = "n", yaxt = "n", main = "Distribuição Normal")
+
+qqnorm(faithful$waiting)
+qqline(faithful$waiting)
+
+shapiro.test(faithful$waiting)
+
+#Perceba que, tanto pelo gráfico, tanto pelo teste de hipótese, os dados não estão normalmente distribuídos.
+```
+15- O dataset "infert" vem nativo com o RStudio. Neste modelo, foi estudada a infertilidade após o aborto espontâneo e induzido.  Extraia a coluna "pooled.stratum" e verifique se os dados estão normalmente distribuídos.
+```{r}
+
+hist(infert$pooled.stratum, xlab = NULL, ylab = NULL, main = NULL)
+par(new = T)
+densidade = density(infert$pooled.stratum)
+plot(densidade, xaxt = "n", yaxt = "n", main = "Distribuição Normal")
+
+qqnorm(infert$pooled.stratum)
+qqline(infert$pooled.stratum)
+
+shapiro.test(infert$pooled.stratum)
+
+#Perceba que, tanto pelo gráfico, tanto pelo teste de hipótese, os dados não estão normalmente distribuídos.
+```
+16- O dataset "cars" vem nativo com o RStudio. É possível encontrar a velocidade e a distância até parar de alguns carros neste dataset.  Extraia a coluna "speed" e verifique se os dados estão normalmente distribuídos.
+```{r}
+
+
+hist(cars$speed, xlab = NULL, ylab = NULL, main = NULL)
+par(new = T)
+densidade = density(cars$speed)
+plot(densidade, xaxt = "n", yaxt = "n", main = "Distribuição Normal")
+
+qqnorm(cars$speed)
+qqline(cars$speed)
+shapiro.test(cars$speed) #Perceba que o p-value está por volta de 47%
+
+
+
+```
+17- Calcule o desvio padrão e a média da coluna "speed" do dataset "cars". Atribua às variáveis: desviopadrao e media, respectivamente.
+```{r}
+
+desviopadrao = sd(cars$speed)
+media = mean(cars$speed)
+
+
+```
+18- Calcule a probabilidade do "speed" ser maior que 14.
+```{r}
+
+pnorm(14, media, desviopadrao, lower.tail = F)
+
+```
+19- João viajou 4 vezes o ano passado. Qual a probabilidade de ele não viajar esse ano?
+```{r}
+
+dpois(0,4)
+
+```
+
+

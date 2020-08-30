@@ -1,0 +1,62 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+Intordução à Estatística com R - Distribuição normal
+
+![Distribuição Normal](https://i.ibb.co/GQhzvDS/dbn.png)
+
+Gerando uma distribuição normal
+```{r}
+
+x = rnorm(1000) #Função para criar uma distribuição normal (Você deve analisar os SEUS dados)
+
+summary(x)
+sd(x)
+
+```
+
+![Shapiro-Wilk](https://i.ibb.co/pbTTpC8/shapirowilk.png)
+
+Teste de Shapiro-Wilk
+```{r}
+
+shapiro.test(x)
+
+```
+Usando o qqplot
+```{r}
+qqnorm(x)
+qqline(x)
+
+```
+Criando um histograma com a densidade
+```{r}
+
+hist(x, xlab = NULL, ylab = NULL, main = NULL)
+par(new = T)
+densidade = density(x)
+plot(densidade, xaxt = "n", yaxt = "n", main = "Distribuição Normal")
+
+```
+Analisando o score-z
+```{r}
+
+#normal = pnorm(Valor que você quer saber a probabilidade, media, desviopadrão, lower.tail = F ou T #F = maior que o valor, T = menor que o valor)
+normal = pnorm(2.5, mean(x), sd(x), lower.tail = T)
+
+normal
+```
+
+![Distribuição Exercício](https://i.ibb.co/b3M1RSF/dbn2.png)
+
+```{r}
+
+media = 8
+dp = 2
+
+pnorm(6, 8, 2, lower.tail = T)
+
+```
+

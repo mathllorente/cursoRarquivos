@@ -1,0 +1,83 @@
+---
+Introdução à Estatística no R - Matheus Leite Llorente
+Mão na massa 2!
+---
+
+1. Importe o arquivo “alunos.csv”, o separador é “;”. Neste arquivo há 1000 alunos de uma escola e suas respectivas notas em uma determinada prova. Suponha que você queira entrevistar uma amostra dessa população. Extraia uma amostra simples de 30% da coluna “Nota", atribuindo à variável amostra. 
+```{r}
+
+```
+2- Calcule a média da coluna "Nota" do dataset "alunos" e da sua amostra. Compare as médias.
+```{r}
+
+```
+3- Do mesmo dataset "alunos" extraia uma amostra sistemática que some 3 a partir de um valor aleatório, com limite de 1000.
+```{r}
+
+```
+4- Calcule a média da coluna "Nota" do dataset "alunos" e da amostra do exercício anterior. Compare as médias.
+```{r}
+
+```
+5- Calcule uma margem de erro para média da amostra simples, com nível de confiança de 95%.
+```{r}
+
+```
+6- Qual é o intervalo de confiança para o exercício anterior?
+```{r}
+
+```
+7- Calcule uma margem de erro para média da amostra sistemática, com nível de confiança de 95%.
+```{r}
+
+```
+8- Qual é o intervalo de confiança para o exercício anterior?
+```{r}
+
+```
+9- Qual a probabilidade de eu jogar uma moeda 10 vezes e dar "cara" 5 vezes?
+```{r}
+
+```
+10- Qual a probabilidade de eu jogar uma moeda 5 vezes e dar menos que 3 "coroas"?
+```{r}
+
+```
+11- Qual a probabilidade de eu jogar uma moeda 5 vezes e dar mais que 3 "caras"?
+```{r}
+
+```
+12- Qual a probabilidade de eu jogar uma moeda 5 vezes e dar 5 "coroas"?
+```{r}
+
+```
+13- Uma prova têm 10 exercícios com 5 alternativas cada. Qual a probabilidade de eu acertar APENAS 6 questões "chutando"?
+```{r}
+
+```
+14- O dataset "faithful" vem nativo com o RStudio. Ele demonstra o tempo de espera entre as erupções e a duração do Gêiser Old Faithful, nos EUA.  Extraia a coluna "waiting" e verifique se os dados estão normalmente distribuídos.
+```{r}
+
+```
+15- O dataset "infert" vem nativo com o RStudio. Neste modelo, foi estudada a infertilidade após o aborto espontâneo e induzido.  Extraia a coluna "pooled.stratum" e verifique se os dados estão normalmente distribuídos.
+```{r}
+
+```
+16- O dataset "cars" vem nativo com o RStudio. É possível encontrar a velocidade e a distância até parar de alguns carros neste dataset.  Extraia a coluna "speed" e verifique se os dados estão normalmente distribuídos.
+```{r}
+
+```
+17- Calcule o desvio padrão e a média da coluna "speed" do dataset "cars". Atribua às variáveis: desviopadrao e media, respectivamente.
+```{r}
+
+```
+18- Calcule a probabilidade do "speed" ser maior que 14.
+```{r}
+
+```
+19- João viajou 4 vezes o ano passado. Qual a probabilidade de ele não viajar esse ano?
+```{r}
+
+```
+
+

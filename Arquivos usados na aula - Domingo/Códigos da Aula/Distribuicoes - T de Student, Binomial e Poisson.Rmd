@@ -1,0 +1,128 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+Introdução à Estatística no R
+
+
+![Distribuição T de Student](https://i.ibb.co/Vt8KVyQ/tstudent2.png)
+
+Um estudo indica que uma profissão ganha 75 reais por hora (Não conhecemos o desvio padrão da população). Coletamos uma amostra de 9 pessoas da profissão e descobrimos que o desvio padrão da amostra é igual a 10. Qual a probabilidade de ser menor que 80 reais por hora?
+
+Grau de liberdade = 8 e t = 1,5
+```{r}
+
+pt(1.5,8, lower.tail = T) #Menor que
+
+pt(1.5,8, lower.tail = F) #Maior que
+
+```
+
+```{r}
+
+#Teste T para uma amostra
+
+#É necessário que os dados estejam normalmente distribuídos
+
+#Observe o dataset "alturas". O mesmo contém a altura de 30 pessoas. Sabe-se que a média da altura do local onde elas vivem é 167cm, a altura média dessas pessoas é diferente da altura local deles? Descreveremos de forma apropriada.
+
+Altura = c(174,166,159,171,157,169,176,159,160,172,173,172,177,165,170,160,161,162,158,165,169,171,165,161,164,178,165,157,180,172)
+Pessoa = c(1:30)
+
+alturas = data.frame(Pessoa,Altura)
+
+dplyr::glimpse(alturas)
+
+#Testando a normalidade dos dados
+shapiro.test(alturas$Altura)
+
+#Teste de T
+
+t.test(alturas$Altura, mu = 167)
+
+#H0: média da amostra = média pop (p > 0.05)
+#H1: média da amostra != média pop (p <= 0.05)
+
+#O teste-t para uma amostra mostrou que a média de altura da amostra (166,93) não é diferente da média local (167). p = 0,957
+
+boxplot(alturas$Altura)
+
+```
+
+
+
+![Exemplo](https://i.ibb.co/SJNYtrS/dbinom.png)
+
+![Exemplo](https://i.ibb.co/N9Csbm3/provadbinom.png)
+
+Qual a probabilidade de eu jogar uma moeda 3 vezes e dar cara 2 vezes?
+
+Distribuição Binomial
+
+```{r}
+
+rbinom(10, 1, 0.5) #Simulando
+
+dbinom(2,3, prob = 0.5) #Pontual
+
+#Probabilidade de dar 2 ou menos
+
+y = dbinom(2,3, prob = 0.5)
+z = dbinom(1,3, prob = 0.5)
+o = dbinom(0,3, prob = 0.5)
+
+7/8
+
+y+z+o
+
+pbinom(2,3,0.5) #Acumulativa
+
+#Probabilidade de dar MENOS que 2 caras
+
+4/8
+
+pbinom(1,3,0.5)
+
+#Probabilidade de dar MAIS que 2 caras
+1/8
+
+pbinom(2,3,0.5, lower.tail = F)
+
+#Um exame tem 2 questões 5 alternativas. Qual a probabilidade de acertar APENAS 1 “chutando”?
+
+dbinom(1,2,0.20) #0.20 = 1/5
+
+```
+
+
+![Exemplo Poisson](https://i.ibb.co/YhrnSLQ/poisson.png)
+
+O número médio de acidentes de carros por dia é de 2. Qual a probabilidade de ocorrerem 3 em um dia?
+
+Distribuição de Poisson
+
+```{r}
+
+rpois(10, 2) #Simulando
+
+dpois(3,2) #Pontual
+
+
+#Probabilidade de ocorrerem 3 ou menos?
+
+ppois(3,2)
+
+#Probabilidade de ocorrerem MENOS que 3?
+
+ppois(2,2)
+
+#Probabilidade de ocorrerem MAIS que 3?
+
+ppois(3,2, lower.tail = F)
+
+dpois(0,1)
+
+```
+
+

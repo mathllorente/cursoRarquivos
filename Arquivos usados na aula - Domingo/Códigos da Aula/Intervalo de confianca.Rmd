@@ -1,0 +1,70 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+Introdução à Estatística no R - Intervalo de confiança
+
+![Tabela do Nível de Confiança](https://i.ibb.co/gZ2sHvK/tabelaintcf.png)
+
+![Exemplo para Proporção](https://i.ibb.co/L9FM4Xp/intcfprop.png)
+
+Intervalo de confiança para Proporção
+```{r}
+n = readline(prompt = "Digite o intervalo de confiança: ")
+
+if(as.numeric(n)==80){
+  z = 1.28
+}else if(as.numeric(n)==90){
+  z = 1.64
+}else if(as.numeric(n)==95){
+  z = 1.96
+}else if(as.numeric(n)==98){
+  z = 2.33
+}else if(as.numeric(n)==99){
+  z = 2.58
+}
+
+a = readline(prompt = "Qual é a amostra coletada (n)? ")
+p = readline(prompt = "Qual a proporção a ser avaliada? ")
+
+p = as.numeric(p)/100
+
+me = z * sqrt((as.numeric(p)*(1-as.numeric(p)))/as.numeric(a))
+
+paste("Sua margem de erro é:", round(me,2), "O intervalo de confiança é de:", round((as.numeric(p)-me)*100, 2), "a", round((as.numeric(p)+me)*100,2), "Com nível de confiança de", paste0(n, "%"))
+
+
+```
+
+![Exemplo para Média](https://i.ibb.co/fkxVFfs/intcfmedia.png)
+
+Intervalo de confiança para Média
+```{r}
+
+n = readline(prompt = "Digite o intervalo de confiança: ")
+
+if(as.numeric(n)==80){
+  z = 1.28
+}else if(as.numeric(n)==90){
+  z = 1.64
+}else if(as.numeric(n)==95){
+  z = 1.96
+}else if(as.numeric(n)==98){
+  z = 2.33
+}else if(as.numeric(n)==99){
+  z = 2.58
+}
+
+m = readline(prompt = "Digite a média dos seus dados: ")
+d = readline(prompt = "Digite o desvio padrão dos seus dados: ")
+a = readline(prompt = "Qual é a amostra coletada (n)?")
+
+
+me = z*(as.numeric(d)/sqrt(as.numeric(a)))
+
+paste("Sua margem de erro é:", round(me,2), "O intervalo de confiança é de:", as.numeric(m)-me, "a", as.numeric(m)+me, "Com nível de confiança de", paste0(n, "%"))
+
+
+```
+

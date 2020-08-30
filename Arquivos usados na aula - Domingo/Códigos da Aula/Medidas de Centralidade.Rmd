@@ -1,0 +1,105 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+Introdução à Estatística no R - Medidas de Centralidade
+
+![Medidas Centrais](https://i.ibb.co/PZ8G6nj/centrais.png)
+
+Criando um vetor
+```{r}
+
+salarios = c(1950,2520,4500,1800,3699,8000,5600,1658)
+
+```
+Média
+```{r}
+
+mean(salarios)
+
+```
+Moda, usando a tabela de frequências absolutas
+```{r}
+
+a = c("A","A","A","A","A","B","B","B","C")
+table(as.factor(a))
+
+#Gerando uma tabela de frequências relativas
+prop.table(table(as.factor(a)))
+
+```
+Mediana
+```{r}
+
+median(salarios)
+
+```
+
+![Variância Populacional](https://i.ibb.co/nRTVsFP/matheus.png)
+
+![Variância Amostral](https://i.ibb.co/87wK8S3/matheusamostral.png)
+
+Variância
+```{r}
+
+matheus = c(10,5,3,8,9,4)
+
+
+#Variância Populacional
+
+media = mean(matheus)
+amostra = length(matheus)
+
+varpop = sum((matheus - media)^2)/amostra
+varpop
+#Variância Amostral
+
+
+algumas = c(8,9,3)
+
+varam = var(algumas)
+varam
+
+```
+Desvio Padrão
+```{r}
+
+#Populacional
+
+sqrt(varpop) #Raiz quadrada da variância populacional
+
+#Amostral
+sd(algumas) #Função para calcular o desvio padrão amostral
+
+
+```
+
+![Quartis](https://i.ibb.co/p2zdQwq/quartis.png)
+
+Quartis
+```{r}
+
+quartis = quantile(salarios)
+quartis
+
+```
+Resumo
+```{r}
+
+summary(salarios)
+
+#install.packages("stargazer")
+library(stargazer)
+
+pessoa = c("A","B","C","D","E","F","G","H")
+
+z = data.frame(pessoa, salarios)
+
+stargazer(z) #Com summary
+stargazer(z, summary = F)
+
+#https://quicklatex.com/
+
+```
+

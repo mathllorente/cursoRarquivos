@@ -1,0 +1,27 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+![Distribuição T de Student](https://i.ibb.co/80SkSYW/tstudent.png)
+
+Introdução à Estatística no R - Distribuição T de Student
+```{r}
+
+x = readline(prompt = "Qual é o seu X? ")
+media = readline(prompt = "Qual é a média da população? ")
+s = readline(prompt = "Qual é o Desvio Padrão da amostra? ")
+n = readline(prompt = "Qual é o tamanho da sua amostra? ")
+
+x = as.numeric(x)
+media = as.numeric(media)
+s = as.numeric(s)
+n = as.numeric(n)
+
+gl = as.numeric(n) - 1
+
+t = (x-media)/(s/sqrt(n))
+
+paste("Seu t equivale a", t)
+
+```

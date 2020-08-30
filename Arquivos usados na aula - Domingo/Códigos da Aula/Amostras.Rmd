@@ -1,0 +1,73 @@
+Bem-vindx ao Curso Básico de R
+------------------------------
+Por: Matheus Leite Llorente
+------------------------------
+
+Introdução à Estatística no R
+
+![O que é amostra?](https://i.ibb.co/qBT8rf1/amostra1.png)
+
+![Tipos de amostra](https://i.ibb.co/YjPNW6h/tiposdeamostra.png)
+
+Amostra Simples
+```{r}
+
+amostra1 = sample(c(1:1000), 150, replace = F) #Gerando 150 números aleatórios de 0 a 1000 sem reposição
+amostra1
+
+amostra2 = sample(c(0,1), 150, replace = T, prob = c(0.5,0.5)) #Gerando 150 números com chances de ser 0 (50% de probabilidade) ou 1 (50% de probabilidade)
+amostra2
+
+iris #Visualizando o dataset iris
+
+amostra3 = sample(c(0,1), 150, replace = T, prob = c(0.7,0.3)) #Gerando 150 números com chances de ser 0 (70% de probabilidade) ou 1 (30% de probabilidade)
+amostrairis = iris[amostra3 == 1,] #Criando a amostra. Atribuição lógica de correspondência das linhas de iris quando há equivalência (de 1) na amostra3 
+amostrairis
+
+#Analisando a amostra e comparando
+
+mean(iris$Sepal.Length)
+mean(amostrairis$Sepal.Length)
+
+```
+Amostra Estratificada
+```{r}
+
+#install.packages("sampling")
+library(sampling)
+
+summary(as.factor(iris$Species)) #Visualizando as espécies 
+iris$Species #Visualizando as espécies 
+proporcao = 25 #Atribuindo representatividade
+
+
+amostrairis2 = strata(data = iris, stratanames = c("Species"), size = c(25, 25, 25), method = "srswor") #Srswor = sem reposição / Srswr = com reposição
+amostrairis2 = iris[amostrairis2$ID_unit,] #Selecionando a correspondência no dataset
+
+iris[2,]
+
+#Analisando a amostra e comparando
+
+mean(iris$Sepal.Length)
+mean(amostrairis2$Sepal.Length)
+
+
+```
+Amostra Sistemática
+```{r}
+#install.packages("TeachingSampling")
+library(TeachingSampling)
+
+amostra4 = S.SY(150, 5) #Gerar números que não ultrapassem 150. Gerar um número de forma aleatória e acrescentar de 5 em 5 até 150
+amostra4
+
+amostrairis3 = iris[amostra4,]
+amostrairis3
+
+#Analisando a amostra e comparando
+
+mean(iris$Sepal.Length)
+mean(amostrairis3$Sepal.Length)
+
+```
+
